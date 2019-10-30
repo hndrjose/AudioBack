@@ -1,0 +1,24 @@
+{
+    "name": "audio",
+    "version": "1.0.0",
+    "description": "Audiometria Backend",
+    "main": "index.js",
+    "scripts": {
+        "start": "app.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon src/app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parse": "^0.1.0",
+        "ejs": "^2.6.2",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.1.5",
+        "express-myconnection": "^1.0.4",
+        "morgan": "^1.9.1",
+        "mysql": "^2.17.1",
+        "nodemon": "^1.19.1",
+        "serve-index": "^1.9.1"
+    }
+}

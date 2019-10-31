@@ -51,7 +51,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 const connection = mysql.createConnection({
-    host: 'Localhost', // Localhost
+    host: 'http://3.132.218.141', // Localhost
     user: 'jose', // root
     password: 'Ceutec-19', // Ceutec-19
     database: 'Audiometria', // Audiometria 

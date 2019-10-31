@@ -52,7 +52,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const connection = mysql.createConnection({
     host: 'Localhost', // Localhost
-    user: 'Jose', // root
+    user: 'jose', // root
     password: 'Ceutec-19', // Ceutec-19
     database: 'Audiometria', // Audiometria 
     multipleStatements: true

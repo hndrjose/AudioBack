@@ -13,7 +13,7 @@ app.use(fileUpload());
 
 // enable-cors.org, expressjs  mideware
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // me permitira hacer peticiones http al server
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
@@ -52,7 +52,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const connection = mysql.createConnection({
     host: 'Localhost', // Localhost
-    user: 'jose', // root
+    user: 'root', // root
     password: 'Ceutec-19', // Ceutec-19
     database: 'Audiometria', // Audiometria 
     multipleStatements: true
@@ -192,9 +192,9 @@ app.get('/imagenaudiometria/:img', (req, res, next) => {
 });
 ///////////////////////////////////////////  PROCEDIMIENTO DE LOGIN
 
-app.post('/log', (req, res) => {
-    var nombre = req.body.nombre;
-    var password = req.body.password;
+app.get('/log:nombre,password', (req, res) => {
+    var nombre = req.params.nombre
+    var password = req.params.password;
 
     const queryString = "SELECT * FROM usuario WHERE Nombre = ? AND password = ?"
     connection.query(queryString, [nombre, password], (err, rows, fields) => {

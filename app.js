@@ -17,6 +17,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // me permitira hacer peticiones http al server
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
@@ -192,9 +193,9 @@ app.get('/imagenaudiometria/:img', (req, res, next) => {
 });
 ///////////////////////////////////////////  PROCEDIMIENTO DE LOGIN
 
-app.get('/log:nombre,password', (req, res) => {
-    var nombre = req.params.nombre
-    var password = req.params.password;
+app.post('/log', (req, res) => {
+    var nombre = req.body.nombre
+    var password = req.body.password;
 
     const queryString = "SELECT * FROM usuario WHERE Nombre = ? AND password = ?"
     connection.query(queryString, [nombre, password], (err, rows, fields) => {

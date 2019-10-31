@@ -13,7 +13,7 @@ app.use(fileUpload());
 
 // enable-cors.org, expressjs  mideware
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // me permitira hacer peticiones http al server
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
@@ -51,7 +51,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 const connection = mysql.createConnection({
-    host: 'http://3.132.218.141', // Localhost
+    host: 'Localhost', // Localhost
     user: 'jose', // root
     password: 'Ceutec-19', // Ceutec-19
     database: 'Audiometria', // Audiometria 
@@ -180,7 +180,7 @@ app.get('/imagenaudiometria/:img', (req, res, next) => {
 
     var img = req.params.img;
 
-    const pathImagen = path.resolve(__dirname, `./imagen/${img}`);
+    const pathImagen = path.resolve(__dirname, `./src/imagen/${img}`);
 
     if (fs.existsSync(pathImagen)) {
         res.sendFile(pathImagen);

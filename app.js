@@ -2,25 +2,20 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const fs = require('fs');
-
 const app = express();
-
-
 
 
 // default options
 app.use(fileUpload());
 
 // enable-cors.org, expressjs  mideware
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // me permitira hacer peticiones http al server
-    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
-    res.setHeader('Access-Control-Allow-Credentials', true);
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
-
 
 
 const morgan = require('morgan');
@@ -52,17 +47,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 const connection = mysql.createConnection({
-    host: '3.132.218.141', // Localhost
-    user: 'jose', // root
+    host: 'localhost', // Localhost
+    user: 'root', // root
     password: 'Ceutec-19', // Ceutec-19
-    database: 'audiometria', // Audiometria 
+    database: 'Audiometria', // Audiometria 
     multipleStatements: true
 })
-
-
-
-
-
 
 
 
